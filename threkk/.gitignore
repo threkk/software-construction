@@ -107,3 +107,4 @@ target/
 parser.out
 parsetab.py
 lextab.py
+docs/

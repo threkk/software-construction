@@ -1,0 +1,961 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to QL Workbench’s documentation! &#8212; QL Workbench 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-ql-workbench-s-documentation">
+<h1>Welcome to QL Workbench&#8217;s documentation!<a class="headerlink" href="#welcome-to-ql-workbench-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+
+<span class="n">This</span> <span class="n">program</span> <span class="n">generates</span> <span class="n">a</span> <span class="n">formulary</span> <span class="n">based</span> <span class="n">on</span> <span class="n">QL</span> <span class="n">files</span><span class="o">.</span> <span class="n">It</span> <span class="n">parses</span> <span class="n">the</span>
+<span class="n">given</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="n">generates</span> <span class="n">a</span> <span class="n">graphical</span> <span class="n">interface</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">content</span><span class="o">.</span>
+<span class="n">In</span> <span class="n">case</span> <span class="n">it</span> <span class="n">contains</span> <span class="n">errors</span><span class="p">,</span> <span class="n">they</span> <span class="n">will</span> <span class="n">be</span> <span class="n">displayed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span>
+
+<span class="n">Options</span><span class="p">:</span>
+    <span class="o">--</span><span class="n">help</span>  <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ql">
+<h1>QL<a class="headerlink" href="#ql" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-qlworkbench.ql.lexer">
+<span id="ql-lexer"></span><h2>QL Lexer<a class="headerlink" href="#module-qlworkbench.ql.lexer" title="Permalink to this headline">¶</a></h2>
+<p>This module defines the parser of the QL language. It uses the PLY library to
+take a string and return instead a stream of tokens. PLY is often used as a
+single script but in this case we use a class for better encapsulation and code
+organisation.</p>
+<dl class="class">
+<dt id="qlworkbench.ql.lexer.QLLexer">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.lexer.</code><code class="descname">QLLexer</code><span class="sig-paren">(</span><em>checker</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.lexer.QLLexer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The QLLexer parser shaped as a class</p>
+<dl class="method">
+<dt id="qlworkbench.ql.lexer.QLLexer.t_COMMENT">
+<code class="descname">t_COMMENT</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.lexer.QLLexer.t_COMMENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comments are ignored</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.lexer.QLLexer.t_DECIMAL">
+<code class="descname">t_DECIMAL</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.lexer.QLLexer.t_DECIMAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>We make sure the value returned is an float</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.lexer.QLLexer.t_ID">
+<code class="descname">t_ID</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.lexer.QLLexer.t_ID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifies the ID tokens. It also identifies all the reserved words by
+looking them up in a dictionary and substituting the ID type for the
+reserved word.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.lexer.QLLexer.t_WHITESPACE">
+<code class="descname">t_WHITESPACE</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.lexer.QLLexer.t_WHITESPACE" title="Permalink to this definition">¶</a></dt>
+<dd><p>White spaces are ignored</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.lexer.QLLexer.t_error">
+<code class="descname">t_error</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.lexer.QLLexer.t_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error handler. It logs when a character is not recognised by any token
+of the lexer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.lexer.QLLexer.t_newline">
+<code class="descname">t_newline</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.lexer.QLLexer.t_newline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tracks the line number for error reporting purposes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlworkbench.ql.parser">
+<span id="ql-parser"></span><h2>QL Parser<a class="headerlink" href="#module-qlworkbench.ql.parser" title="Permalink to this headline">¶</a></h2>
+<p>This module defines the grammar of the QL language. Given the tokens described
+in <cite>qlworkbench.ql.parser</cite>.</p>
+<p>The output of the parser is an AST tree. The AST tree has been processed to
+simplify the raw output of the grammar and some reduntant or innecesary nodes
+and tokens haven been merged. The resultant AST tree is sucession of nodes
+which each one represents one statement of the file and one field of the form.</p>
+<p>The statement can be declarations of questions or assginations of values. They
+have three possible types: boolean, string and decimal. These statement can be
+conditional.</p>
+<dl class="class">
+<dt id="qlworkbench.ql.parser.QLParser">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.parser.</code><code class="descname">QLParser</code><span class="sig-paren">(</span><em>tokens</em>, <em>checker</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encapsulates the logic of the PLY parser.</p>
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_assignation">
+<code class="descname">p_assignation</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_assignation" title="Permalink to this definition">¶</a></dt>
+<dd><p>assignation : STR ID COLON type ASSIGN expression</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_comparison">
+<code class="descname">p_comparison</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_comparison" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>comparison <span class="classifier-delimiter">:</span> <span class="classifier">comparison LT expression</span></dt>
+<dd><div class="first last line-block">
+<div class="line">comparison LET expression</div>
+<div class="line">comparison GT expression</div>
+<div class="line">comparison GET expression</div>
+<div class="line">comparison NEQ expression</div>
+<div class="line">comparison EQ expression</div>
+<div class="line">expression</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_cond">
+<code class="descname">p_cond</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_cond" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>cond <span class="classifier-delimiter">:</span> <span class="classifier">cond AND comparison</span></dt>
+<dd><div class="first last line-block">
+<div class="line">cond OR comparison</div>
+<div class="line">comparison</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_condition">
+<code class="descname">p_condition</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_condition" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>condition <span class="classifier-delimiter">:</span> <span class="classifier">IF LPAREN cond RPAREN LBRACK statements RBRACK</span></dt>
+<dd><div class="first last line-block">
+<div class="line">IF LPAREN cond RPAREN LBRACK statements RBRACK ELSE LBRACK statements RBRACK</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_declaration">
+<code class="descname">p_declaration</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_declaration" title="Permalink to this definition">¶</a></dt>
+<dd><p>declaration : STR ID COLON type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_empty">
+<code class="descname">p_empty</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>empty :</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_expression">
+<code class="descname">p_expression</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_expression" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>expression <span class="classifier-delimiter">:</span> <span class="classifier">expression PLUS term</span></dt>
+<dd><div class="first last line-block">
+<div class="line">expression MINUS term</div>
+<div class="line">term</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_factor">
+<code class="descname">p_factor</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_factor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>factor <span class="classifier-delimiter">:</span> <span class="classifier">LPAREN cond RPAREN</span></dt>
+<dd><div class="first last line-block">
+<div class="line">NOT factor</div>
+<div class="line">TRUE</div>
+<div class="line">FALSE</div>
+<div class="line">DECIMAL</div>
+<div class="line">STR</div>
+<div class="line">ID</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_start">
+<code class="descname">p_start</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>start : FORM ID LBRACK statements RBRACK</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_statements">
+<code class="descname">p_statements</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_statements" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>statements <span class="classifier-delimiter">:</span> <span class="classifier">assignation statements</span></dt>
+<dd><div class="first last line-block">
+<div class="line">declaration statements</div>
+<div class="line">condition statements</div>
+<div class="line">empty statements</div>
+<div class="line">assignation</div>
+<div class="line">declaration</div>
+<div class="line">condition</div>
+<div class="line">empty</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_term">
+<code class="descname">p_term</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_term" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>term <span class="classifier-delimiter">:</span> <span class="classifier">term MULT factor</span></dt>
+<dd><div class="first last line-block">
+<div class="line">term DIV factor</div>
+<div class="line">factor</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.parser.QLParser.p_type">
+<code class="descname">p_type</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.parser.QLParser.p_type" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>type <span class="classifier-delimiter">:</span> <span class="classifier">BOOLEAN</span></dt>
+<dd><div class="first last line-block">
+<div class="line">DECIMAL</div>
+<div class="line">STRING</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlworkbench.ql.ast.type">
+<span id="ast"></span><h2>AST<a class="headerlink" href="#module-qlworkbench.ql.ast.type" title="Permalink to this headline">¶</a></h2>
+<p>The type module contains the information about the different types supported by
+the AST. Classes were not strictly necessary (a bunch of functions in the
+module could have make it too) but being able to pass a class made the whole
+process much easier.</p>
+<dl class="class">
+<dt id="qlworkbench.ql.ast.type.Boolean">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.type.</code><code class="descname">Boolean</code><a class="headerlink" href="#qlworkbench.ql.ast.type.Boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boolean (true/false) type</p>
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Boolean.allowed_operations">
+<em class="property">static </em><code class="descname">allowed_operations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Boolean.allowed_operations" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of allowed operations for the nodes of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Boolean.create_variable">
+<em class="property">static </em><code class="descname">create_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Boolean.create_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialises a UI variable of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Boolean.default_value">
+<em class="property">static </em><code class="descname">default_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Boolean.default_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default value to use by the variables of this type in case they do not
+have any value.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Boolean.init_field">
+<em class="property">static </em><code class="descname">init_field</code><span class="sig-paren">(</span><em>ui</em>, <em>variable</em>, <em>assignation=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Boolean.init_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an input field of the type for declarations and assignations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.type.Decimal">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.type.</code><code class="descname">Decimal</code><a class="headerlink" href="#qlworkbench.ql.ast.type.Decimal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decimal (numeric) type</p>
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Decimal.allowed_operations">
+<em class="property">static </em><code class="descname">allowed_operations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Decimal.allowed_operations" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of allowed operations for the nodes of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Decimal.create_variable">
+<em class="property">static </em><code class="descname">create_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Decimal.create_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialises a UI variable of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Decimal.default_value">
+<em class="property">static </em><code class="descname">default_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Decimal.default_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default value to use by the variables of this type in case they do not
+have any value.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Decimal.init_field">
+<em class="property">static </em><code class="descname">init_field</code><span class="sig-paren">(</span><em>ui</em>, <em>variable</em>, <em>assignation=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Decimal.init_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an input field of the type for declarations and assignations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.type.String">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.type.</code><code class="descname">String</code><a class="headerlink" href="#qlworkbench.ql.ast.type.String" title="Permalink to this definition">¶</a></dt>
+<dd><p>String (characters) type</p>
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.String.allowed_operations">
+<em class="property">static </em><code class="descname">allowed_operations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.String.allowed_operations" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of allowed operations for the nodes of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.String.create_variable">
+<em class="property">static </em><code class="descname">create_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.String.create_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialises a UI variable of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.String.default_value">
+<em class="property">static </em><code class="descname">default_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.String.default_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default value to use by the variables of this type in case they do not
+have any value.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.String.init_field">
+<em class="property">static </em><code class="descname">init_field</code><span class="sig-paren">(</span><em>ui</em>, <em>variable</em>, <em>assignation=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.String.init_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an input field of the type for declarations and assignations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.type.Type">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.type.</code><code class="descname">Type</code><a class="headerlink" href="#qlworkbench.ql.ast.type.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract parent class. Not supposed to be instantiated</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.type.Undefined">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.type.</code><code class="descname">Undefined</code><a class="headerlink" href="#qlworkbench.ql.ast.type.Undefined" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Undefined type is used by the typechecker to refer to the type of an
+undefined unknown variable. This type should never pass the typechecker and
+reach the UI building as the pressence of this type is detected as a
+blocking grammar error.</p>
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Undefined.allowed_operations">
+<em class="property">static </em><code class="descname">allowed_operations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Undefined.allowed_operations" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of allowed operations for the nodes of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Undefined.create_variable">
+<em class="property">static </em><code class="descname">create_variable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Undefined.create_variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialises a UI variable of this type</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Undefined.default_value">
+<em class="property">static </em><code class="descname">default_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Undefined.default_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default value to use by the variables of this type in case they do not
+have any value.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qlworkbench.ql.ast.type.Undefined.init_field">
+<em class="property">static </em><code class="descname">init_field</code><span class="sig-paren">(</span><em>ui</em>, <em>variable</em>, <em>assignation=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.type.Undefined.init_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an input field of the type for declarations and assignations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-qlworkbench.ql.ast.node"></span><p>This module holds the definition of the different nodes of the AST. The nodes
+can be the <cite>Declaration</cite> of new questions or the <cite>Assgination</cite> of values.</p>
+<dl class="class">
+<dt id="qlworkbench.ql.ast.node.Assignation">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.node.</code><code class="descname">Assignation</code><span class="sig-paren">(</span><em>text</em>, <em>variable</em>, <em>type</em>, <em>expression</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Assignation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node which defines the assgination of values.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.node.Declaration">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.node.</code><code class="descname">Declaration</code><span class="sig-paren">(</span><em>text</em>, <em>variable</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Declaration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node which defines a new question.</p>
+<dl class="method">
+<dt id="qlworkbench.ql.ast.node.Declaration.build_ui">
+<code class="descname">build_ui</code><span class="sig-paren">(</span><em>ui</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Declaration.build_ui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the declaration in the given UI.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.node.Node">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.node.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>variable</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract parent class for <cite>Declaration</cite> and <cite>Assignation</cite>. It holds the
+shared logic between them. It is not supposed to be instantiated.</p>
+<dl class="method">
+<dt id="qlworkbench.ql.ast.node.Node.add_condition">
+<code class="descname">add_condition</code><span class="sig-paren">(</span><em>expression</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Node.add_condition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new condition to the display of the node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.ast.node.Node.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Node.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the node in a given context, usually the UI.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.ast.node.Node.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>ql</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Node.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the node the given AST.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.node.Root">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.node.</code><code class="descname">Root</code><a class="headerlink" href="#qlworkbench.ql.ast.node.Root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialises a root node. The root node holds every other node existing in
+the tree. The result is a flatten tree in which the root has a list with
+every descendant declaration or assignation, which hold their own
+conditions.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.node.Variable">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.node.</code><code class="descname">Variable</code><span class="sig-paren">(</span><em>variable</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Variable" title="Permalink to this definition">¶</a></dt>
+<dd><p>The variable class stores the name of a variable and its type. Every
+variable declared or assigned is stored as an instance of this class.</p>
+<dl class="method">
+<dt id="qlworkbench.ql.ast.node.Variable.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.node.Variable.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the variable in a given context, usually the UI.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-qlworkbench.ql.ast.expression"></span><p>This module holds the definition of the expressions that can be found in the
+AST tree. The expressions are not nodes by themselves but they are part of the
+nodes. The express the conditions of the conditionals or the evaluation of the
+values in the assignation nodes. They are not visually represented in the UI
+but hold most of the logic behind it.</p>
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.AndExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">AndExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.AndExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logic AND expression. It takes two Boolean and returns a Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.BinaryExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">BinaryExpression</code><span class="sig-paren">(</span><em>type</em>, <em>operation</em>, <em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.BinaryExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parent abstract class for binary expressions.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.DecimalExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">DecimalExpression</code><span class="sig-paren">(</span><em>decimal</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.DecimalExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leaf expression which holds a Decimal value.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.DivExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">DivExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.DivExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical DIVIDE BY expression. It takes two Decimal and returns a
+Decimal.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.EQExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">EQExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.EQExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logic EQUAL expression. It takes two variables of the same any type and
+returns a Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.Expression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">Expression</code><span class="sig-paren">(</span><em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.Expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract parent class. It defines the shared fields and functions that
+all the nodes have. This is very important as during the recurision, the
+visitor will rely on them.</p>
+<dl class="method">
+<dt id="qlworkbench.ql.ast.expression.Expression.depends_on">
+<code class="descname">depends_on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.Expression.depends_on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of the variables that the expression depends on. This
+means that if any children or children of them of the expression
+contains the identifier of a variable, this one will be returned by
+this function as a list. In case it does not has any dependency, this
+list will be empty.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.ast.expression.Expression.get_children">
+<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.Expression.get_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the children of the node. In case it is a LeafNode,
+the list will be empty.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.ast.expression.Expression.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.Expression.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of the expression. In most of the cases it depends on
+the operation but in case it is an identifier it depends on the context
+it is analysed as we do not have the declaration of the identifier in
+the expression.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ql.ast.expression.Expression.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.Expression.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the value of the expression node depending on the context.
+Usually this value is recursive and depends on the value of the
+children of the expression node.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.FalseExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">FalseExpression</code><a class="headerlink" href="#qlworkbench.ql.ast.expression.FalseExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leaf expression which holds the Boolean value False.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.GETExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">GETExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.GETExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical GREATER OR EQUAL THAN expression. It takes two Decimal and
+returns a Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.GTExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">GTExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.GTExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical GREATER THAN expression. It takes two Decimal and returns a
+Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.IdExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">IdExpression</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.IdExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>ID expressions are a leaf expression which are quite different from the
+others, although it holds many of the same properties and principles. The
+most important one is that its type and value depends strictly on the
+context given. Without a valid context, the IdExpressions will fail.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.LETExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">LETExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.LETExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical LESS OR EQUAL THAN expression. It takes two Decimal and
+returns a Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.LTExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">LTExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.LTExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical LESS THAN expression. It takes two Decimal and returns a
+Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.LeafExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">LeafExpression</code><span class="sig-paren">(</span><em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.LeafExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract parent class for leaf expressions.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.MinusExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">MinusExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.MinusExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical MINUS expression. It takes two Decimal and returns a Decimal.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.MultExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">MultExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.MultExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical MULTIPLY BY expression. It takes two Decimal and returns a
+Decimal.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.NEQExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">NEQExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.NEQExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logic NOT EQUAL expression. It takes two variables of the same any type and
+returns a Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.NotExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">NotExpression</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.NotExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logical NOT operation. It takes a Boolean and returns a Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.OrExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">OrExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.OrExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logic OR expression. It takes two Boolean and returns a Boolean.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.PlusExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">PlusExpression</code><span class="sig-paren">(</span><em>lnode</em>, <em>rnode</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.PlusExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mathematical PLUS expression. It takes two Decimal and returns a Decimal.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.StringExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">StringExpression</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.StringExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leaf expression which holds a String value.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.TrueExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">TrueExpression</code><a class="headerlink" href="#qlworkbench.ql.ast.expression.TrueExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leaf expression which holds the Boolean value True.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ql.ast.expression.UnaryExpression">
+<em class="property">class </em><code class="descclassname">qlworkbench.ql.ast.expression.</code><code class="descname">UnaryExpression</code><span class="sig-paren">(</span><em>type</em>, <em>operation</em>, <em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ql.ast.expression.UnaryExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract parent class for unary expressions.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-qlworkbench.typechecker.checker">
+<span id="checkers"></span><h1>Checkers<a class="headerlink" href="#module-qlworkbench.typechecker.checker" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the error checker. The error checker is in charge of
+making sure that there are no errors in the QL program that would make the
+program to crash. The error checker accepts different types of checker engines
+at the same time to catch all the different types of errors.</p>
+<dl class="class">
+<dt id="qlworkbench.typechecker.checker.Checker">
+<em class="property">class </em><code class="descclassname">qlworkbench.typechecker.checker.</code><code class="descname">Checker</code><a class="headerlink" href="#qlworkbench.typechecker.checker.Checker" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class contains the list of errors and warnings of the checkers. It is
+used by the different checkers to register their errors.</p>
+<dl class="method">
+<dt id="qlworkbench.typechecker.checker.Checker.add_error">
+<code class="descname">add_error</code><span class="sig-paren">(</span><em>node</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.typechecker.checker.Checker.add_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new error to the error list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.typechecker.checker.Checker.add_warning">
+<code class="descname">add_warning</code><span class="sig-paren">(</span><em>node</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.typechecker.checker.Checker.add_warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new warning to the warning list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.typechecker.checker.Checker.get_errors">
+<code class="descname">get_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.typechecker.checker.Checker.get_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a list of reported errors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.typechecker.checker.Checker.get_warnings">
+<code class="descname">get_warnings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.typechecker.checker.Checker.get_warnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a list of reported warning.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.typechecker.checker.CheckerMessage">
+<em class="property">class </em><code class="descclassname">qlworkbench.typechecker.checker.</code><code class="descname">CheckerMessage</code><span class="sig-paren">(</span><em>node</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.typechecker.checker.CheckerMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parent abstract class which holds the information necessary by the
+checker to display a message.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.typechecker.checker.Error">
+<em class="property">class </em><code class="descclassname">qlworkbench.typechecker.checker.</code><code class="descname">Error</code><span class="sig-paren">(</span><em>node</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.typechecker.checker.Error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class which holds a checker error.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.typechecker.checker.Warning">
+<em class="property">class </em><code class="descclassname">qlworkbench.typechecker.checker.</code><code class="descname">Warning</code><span class="sig-paren">(</span><em>node</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.typechecker.checker.Warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class which holds a checker warning.</p>
+</dd></dl>
+
+<span class="target" id="module-qlworkbench.typechecker.lexer_checker"></span><p>This module contains the definition of a Lexer checker. This module is passed
+to the lexer which will report the errors to it when they are detected.</p>
+<span class="target" id="module-qlworkbench.typechecker.parser_checker"></span><p>This module contains the definition of a Parser checker. This module is passed
+to the parser which will report the errors to it when they are detected.</p>
+<span class="target" id="module-qlworkbench.typechecker.ql_checker"></span><p>This module contains the logic of the QL checker. The QL checker looks for and
+reports errors in the AST tree. This module concreteley detects:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Duplicated declarations.</li>
+<li>Duplicated labels.</li>
+<li>Invalid assignations.</li>
+<li>Invalid conditions.</li>
+<li>Invalid operands.</li>
+<li>Cyclic dependencies.</li>
+<li>Undefined dependencies.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="gui">
+<h1>GUI<a class="headerlink" href="#gui" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-qlworkbench.ui.builder">
+<span id="builder"></span><h2>Builder<a class="headerlink" href="#module-qlworkbench.ui.builder" title="Permalink to this headline">¶</a></h2>
+<p>This module takes care of the construction of the UI that the user will
+interact with. This only contains the TK related logic, the application logic,
+result of the parsing, is located in a context class so it can be easily
+modified or substituted.</p>
+<dl class="class">
+<dt id="qlworkbench.ui.builder.Builder">
+<em class="property">class </em><code class="descclassname">qlworkbench.ui.builder.</code><code class="descname">Builder</code><a class="headerlink" href="#qlworkbench.ui.builder.Builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents a UI object. It initalises the environment and allows
+to place different types of widgets. The available widgets depends on the
+variable type (boolean, decimal or string) and they can be set as writing
+widgets which allow the users to change their values, or to as reading
+widgets which will be used to display the information of calcualted
+variables.</p>
+<dl class="method">
+<dt id="qlworkbench.ui.builder.Builder.add_assignation">
+<code class="descname">add_assignation</code><span class="sig-paren">(</span><em>text</em>, <em>variable</em>, <em>expr</em>, <em>conditions</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.builder.Builder.add_assignation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an assignation to the form using the given text, variable,
+expression and conditions. The type and format of the questions will
+depend on the type of the variable given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.builder.Builder.add_question">
+<code class="descname">add_question</code><span class="sig-paren">(</span><em>text</em>, <em>variable</em>, <em>conditions</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.builder.Builder.add_question" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a question to the form using the given text, variable and
+conditions. The type and format of the questions will depend on the
+type of the variable given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.builder.Builder.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.builder.Builder.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the elements in the GUI. Every element is a set of label + field
+which are placed in different rows. They are placed in the same order
+as they were defined. After that, it grabs the window&#8217;s focus and
+leaves the application in a running state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.builder.Builder.set_title">
+<code class="descname">set_title</code><span class="sig-paren">(</span><em>text='QL Workbench'</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.builder.Builder.set_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns the given title to the UI. In case no parameter is passed, it
+uses &#8216;QL Workbench&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlworkbench.ui.builder.Visitor">
+<em class="property">class </em><code class="descclassname">qlworkbench.ui.builder.</code><code class="descname">Visitor</code><span class="sig-paren">(</span><em>root</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.builder.Visitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the visitor pattern. Given an AST and a GUI builder, it will go
+trough the AST to retrieve all the nodes and use them to build the user
+interface.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlworkbench.ui.context">
+<span id="context"></span><h2>Context<a class="headerlink" href="#module-qlworkbench.ui.context" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>ui.context</cite> module defines all the classes necessary to describe the
+context of an user interface. Although it has been designed with the module
+<cite>ui.builder</cite> in mind, it should be easily substituted.</p>
+<dl class="class">
+<dt id="qlworkbench.ui.context.UIContext">
+<em class="property">class </em><code class="descclassname">qlworkbench.ui.context.</code><code class="descname">UIContext</code><a class="headerlink" href="#qlworkbench.ui.context.UIContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>The UIContext class is esentially a wrapper of a native dictionary which
+stores in every entry a pair of variable name (key) and register (value).
+The functions defined add extra features and checks to the original
+dictionary. Every register is an instance of the UIRegister class.</p>
+<p>It also holds an event manager to deal with the updates of the variables of
+the registers.</p>
+<dl class="method">
+<dt id="qlworkbench.ui.context.UIContext.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>variable</em>, <em>value</em>, <em>ui</em>, <em>conditions=[]</em>, <em>expression=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.context.UIContext.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will add a new entry to the register. The optional
+paramenters allow adding both <cite>declaration</cite> and <cite>assignation</cite> nodes to
+the register. Conditions are optional, depending on the node.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.context.UIContext.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.context.UIContext.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the value of the variable with name <cite>id</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.context.UIContext.set_value">
+<code class="descname">set_value</code><span class="sig-paren">(</span><em>id</em>, <em>new_value</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.context.UIContext.set_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value of the register with variable name <cite>id</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.context.UIContext.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>variable_name</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.context.UIContext.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the name of a variable, it updates its status and the status of
+all the other variables that depend on it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.context.UIContext.update_all">
+<code class="descname">update_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.context.UIContext.update_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the status of all the registers. Some of the values of the
+register have an uncertain status as they depend on runtime values.
+This function makes sure that all of them have the right values with
+the default runtime values.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qlworkbench.ui.event_manager">
+<span id="event-manager"></span><h2>Event manager<a class="headerlink" href="#module-qlworkbench.ui.event_manager" title="Permalink to this headline">¶</a></h2>
+<p>This module defines a simple event manager that works on a basis of publishers
+and subscribers. This is used in combination with the class <cite>ui.context</cite> to
+update the values of the variables when they change.</p>
+<dl class="class">
+<dt id="qlworkbench.ui.event_manager.EventManager">
+<em class="property">class </em><code class="descclassname">qlworkbench.ui.event_manager.</code><code class="descname">EventManager</code><span class="sig-paren">(</span><em>updater</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.event_manager.EventManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple event manager based on the bulletin board pattern. It defines a
+unique handler and a unique event for simplicity.</p>
+<dl class="method">
+<dt id="qlworkbench.ui.event_manager.EventManager.get_publishers">
+<code class="descname">get_publishers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.event_manager.EventManager.get_publishers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves all the declared publishers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.event_manager.EventManager.publish">
+<code class="descname">publish</code><span class="sig-paren">(</span><em>publisher</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.event_manager.EventManager.publish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all the subscribers of the <cite>publisher</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlworkbench.ui.event_manager.EventManager.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>subscriber</em>, <em>publisher</em><span class="sig-paren">)</span><a class="headerlink" href="#qlworkbench.ui.event_manager.EventManager.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribers the <cite>subscriber</cite> to the <cite>publisher</cite> events</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to QL Workbench&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ql">QL</a><ul>
+<li><a class="reference internal" href="#module-qlworkbench.ql.lexer">QL Lexer</a></li>
+<li><a class="reference internal" href="#module-qlworkbench.ql.parser">QL Parser</a></li>
+<li><a class="reference internal" href="#module-qlworkbench.ql.ast.type">AST</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-qlworkbench.typechecker.checker">Checkers</a></li>
+<li><a class="reference internal" href="#gui">GUI</a><ul>
+<li><a class="reference internal" href="#module-qlworkbench.ui.builder">Builder</a></li>
+<li><a class="reference internal" href="#module-qlworkbench.ui.context">Context</a></li>
+<li><a class="reference internal" href="#module-qlworkbench.ui.event_manager">Event manager</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Alberto Martinez de Murga Ramirez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
