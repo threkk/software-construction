@@ -4,6 +4,7 @@ verify_ssl = true
 
 [dev-packages]
 Sphinx = "*"
+requests = ">=2.20.0"
 
 [packages]
 ply = "*"
